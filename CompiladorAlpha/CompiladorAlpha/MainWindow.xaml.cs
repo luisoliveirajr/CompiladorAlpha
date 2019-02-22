@@ -24,5 +24,13 @@ namespace CompiladorAlpha
         {
             InitializeComponent();
         }
+
+        private Posfixa posfixa = new Posfixa();
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            tbSaida.Text = posfixa.ConvertePosfixa(tbEntrada.Text);
+        }
     }
 }

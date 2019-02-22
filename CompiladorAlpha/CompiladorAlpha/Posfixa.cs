@@ -41,8 +41,73 @@ namespace CompiladorAlpha
             }
             expressao = Auxiliar;
 
-            ExpressaoPosfixa = expressao;
-
+            //Convertendo expressao infixa para posfixa;
+            for(i=0; i < expressao.Length; i++)
+            {
+                //Se for operando;
+                if(expressao[i] != '(' && expressao[i] != ')' && expressao[i] != '.' && expressao[i] != '+' && expressao[i] != '*')
+                {
+                    ExpressaoPosfixa += expressao[i];
+                }
+                //Se for operador;
+                else
+                {
+                    if(expressao[i] == '(')
+                    {
+                        Pilha.Push('(');
+                    }
+                    else if(expressao[i] == ')')
+                    {
+                        //Desempilhar todos elementos da pilha;
+                        while (Pilha.Count != 0 && Pilha.Last() != '(')
+                        {
+                            ExpressaoPosfixa += Pilha.Last();
+                            Pilha.Pop();
+                        }
+                        if(Pilha.Count != 0)
+                        {
+                            Pilha.Pop();
+                        }
+                        else
+                        {
+                            System.Windows.MessageBox.Show("ERRO: Falta abrir parêntese.", "ERRO", System.Windows.MessageBoxButton.OK);
+                        }
+                    }
+                    else
+                    {
+                        if(Pilha.Count != 0)
+                        {
+                            if(Precedencia(expressao[i]) > Precedencia(Pilha.Last()))
+                            {
+                                Pilha.Push(expressao[i]);
+                            }
+                            else
+                            {
+                                while(Pilha.Count != 0 && Precedencia(expressao[i]) <= Precedencia(Pilha.Last()))
+                                {
+                                    ExpressaoPosfixa += Pilha.Last();
+                                    Pilha.Pop();
+                                }
+                                Pilha.Push(expressao[i]);
+                            }
+                        }
+                        else
+                        {
+                            Pilha.Push(expressao[i]);
+                        }
+                    }
+                }
+            }
+            while (Pilha.Count != 0 && Pilha.Last() != '(')
+            {
+                ExpressaoPosfixa += Pilha.Last();
+                Pilha.Pop();
+            }
+            if(Pilha.Count != 0)
+            {
+                System.Windows.MessageBox.Show("ERRO: Falta fechar parêntese.", "ERRO", System.Windows.MessageBoxButton.OK);
+            }
+           
             return ExpressaoPosfixa;
         }
 
