@@ -105,7 +105,7 @@ namespace CompiladorAlpha
             }
             if(Pilha.Count != 0)
             {
-                System.Windows.MessageBox.Show("ERRO: Falta fechar parêntese.", "ERRO", System.Windows.MessageBoxButton.OK);
+                System.Windows.MessageBox.Show("ERRO: Falta fechar parêntesed.", "ERRO", System.Windows.MessageBoxButton.OK);
             }
            
             return ExpressaoPosfixa;
