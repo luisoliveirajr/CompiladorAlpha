@@ -29,7 +29,7 @@ namespace CompiladorAlpha
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            tbSaida.Clear();
             tbSaida.Text = posfixa.ConvertePosfixa(tbEntrada.Text);
         }
     }

@@ -10,8 +10,9 @@ namespace CompiladorAlpha
     {
         private String ExpressaoPosfixa;
         private String Auxiliar;
-        private Stack<char> Pilha = new Stack<char>();
+        private Stack<char> Pilha;
         private int i;
+        private char elemento;
 
         //Analisa precedência dos operadores;
         private int Precedencia(char operador){
@@ -27,6 +28,10 @@ namespace CompiladorAlpha
 
         public String ConvertePosfixa(String expressao)
         {
+            //Inicializando Variaveis;
+            ExpressaoPosfixa = "";
+            Auxiliar = "";
+            Pilha = new Stack<char>();
             //Explicitando as concaternação da expressao;
             for (i=0; i < expressao.Length; i++) 
             {
@@ -79,7 +84,10 @@ namespace CompiladorAlpha
                         {
                             if(Precedencia(expressao[i]) > Precedencia(Pilha.Last()))
                             {
-                                Pilha.Push(expressao[i]);
+                                Console.WriteLine("Topo da Pilha"+Pilha.Last()+" Operador a ser inserido"+expressao[i]);
+                                elemento = expressao[i];
+                                Pilha.Push(elemento);
+                                Console.WriteLine("Topo da Pilha" + Pilha.Last());
                             }
                             else
                             {
@@ -88,12 +96,12 @@ namespace CompiladorAlpha
                                     ExpressaoPosfixa += Pilha.Last();
                                     Pilha.Pop();
                                 }
-                                Pilha.Push(expressao[i]);
+                                Pilha.Push(Convert.ToChar(expressao[i]));
                             }
                         }
                         else
                         {
-                            Pilha.Push(expressao[i]);
+                            Pilha.Push(Convert.ToChar(expressao[i]));
                         }
                     }
                 }
@@ -103,7 +111,7 @@ namespace CompiladorAlpha
                 ExpressaoPosfixa += Pilha.Last();
                 Pilha.Pop();
             }
-            if(Pilha.Count != 0)
+            if (Pilha.Count != 0)
             {
                 System.Windows.MessageBox.Show("ERRO: Falta fechar parêntesed.", "ERRO", System.Windows.MessageBoxButton.OK);
             }
