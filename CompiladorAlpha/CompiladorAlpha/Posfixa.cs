@@ -10,9 +10,8 @@ namespace CompiladorAlpha
     {
         private String ExpressaoPosfixa;
         private String Auxiliar;
-        private Stack<char> Pilha;
+        private Stack<char> Pilha = new Stack<char>();
         private int i;
-        private char elemento;
 
         //Analisa precedência dos operadores;
         private int Precedencia(char operador){
@@ -31,7 +30,6 @@ namespace CompiladorAlpha
             //Inicializando Variaveis;
             ExpressaoPosfixa = "";
             Auxiliar = "";
-            Pilha = new Stack<char>();
             //Explicitando as concaternação da expressao;
             for (i=0; i < expressao.Length; i++) 
             {
@@ -64,9 +62,9 @@ namespace CompiladorAlpha
                     else if(expressao[i] == ')')
                     {
                         //Desempilhar todos elementos da pilha;
-                        while (Pilha.Count != 0 && Pilha.Last() != '(')
+                        while (Pilha.Count != 0 && Pilha.Peek() != '(')
                         {
-                            ExpressaoPosfixa += Pilha.Last();
+                            ExpressaoPosfixa += Pilha.Peek();
                             Pilha.Pop();
                         }
                         if(Pilha.Count != 0)
@@ -82,33 +80,30 @@ namespace CompiladorAlpha
                     {
                         if(Pilha.Count != 0)
                         {
-                            if(Precedencia(expressao[i]) > Precedencia(Pilha.Last()))
+                            if(Precedencia(expressao[i]) > Precedencia(Pilha.Peek()))
                             {
-                                Console.WriteLine("Topo da Pilha"+Pilha.Last()+" Operador a ser inserido"+expressao[i]);
-                                elemento = expressao[i];
-                                Pilha.Push(elemento);
-                                Console.WriteLine("Topo da Pilha" + Pilha.Last());
+                                Pilha.Push(expressao[i]);
                             }
                             else
                             {
-                                while(Pilha.Count != 0 && Precedencia(expressao[i]) <= Precedencia(Pilha.Last()))
+                                while(Pilha.Count != 0 && Precedencia(expressao[i]) <= Precedencia(Pilha.Peek()))
                                 {
-                                    ExpressaoPosfixa += Pilha.Last();
+                                    ExpressaoPosfixa += Pilha.Peek();
                                     Pilha.Pop();
                                 }
-                                Pilha.Push(Convert.ToChar(expressao[i]));
+                                Pilha.Push(expressao[i]);
                             }
                         }
                         else
                         {
-                            Pilha.Push(Convert.ToChar(expressao[i]));
+                            Pilha.Push(expressao[i]);
                         }
                     }
                 }
             }
-            while (Pilha.Count != 0 && Pilha.Last() != '(')
+            while (Pilha.Count != 0 && Pilha.Peek() != '(')
             {
-                ExpressaoPosfixa += Pilha.Last();
+                ExpressaoPosfixa += Pilha.Peek();
                 Pilha.Pop();
             }
             if (Pilha.Count != 0)
