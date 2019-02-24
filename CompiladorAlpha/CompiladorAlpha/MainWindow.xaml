@@ -17,7 +17,7 @@
         <TextBox x:Name="tbEntrada" HorizontalAlignment="Left" Height="23" Margin="77,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="474"/>
         <Button x:Name="button" Content="Compilar" HorizontalAlignment="Left" Margin="440,295,0,0" VerticalAlignment="Top" Width="111" Height="23" Click="Button_Click"/>
         <Label x:Name="label2" Content="Saída:" HorizontalAlignment="Left" Margin="24,246,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbSaida" HorizontalAlignment="Left" Height="23" Margin="77,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="474" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tbSaida" HorizontalAlignment="Left" Height="23" Margin="77,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="474" VerticalContentAlignment="Center" Foreground="#FF228DF9"/>
 
     </Grid>
 </Window>

@@ -26,11 +26,17 @@ namespace CompiladorAlpha
         }
 
         private Posfixa posfixa = new Posfixa();
-
+        private ValidaExpPosfixa vep = new ValidaExpPosfixa();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            String expressao = "";
             tbSaida.Clear();
-            tbSaida.Text = posfixa.ConvertePosfixa(tbEntrada.Text);
+            expressao = posfixa.ConvertePosfixa(tbEntrada.Text);
+            if (vep.ValidaExpressaoPosfixa(expressao) == 1)
+            {
+                tbSaida.Text = expressao;
+            }
+            
         }
     }
 }
