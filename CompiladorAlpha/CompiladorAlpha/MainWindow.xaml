@@ -10,7 +10,7 @@
         <Label x:Name="label" Content="Curso de Ciência da Computação&#xD;&#xA;Disciplina: Compiladores&#xD;&#xA;Acadêmico: Luís Ferreira de Oliveira Júnior&#xD;&#xA;Matricula: 2011212438&#xD;&#xA;Prof.: Alexandre Rossini&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Margin="24,19,0,0" VerticalAlignment="Top" Height="105" Width="317" FontSize="14"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="105" Margin="417,19,0,0" VerticalAlignment="Top" Width="134" Source="{DynamicResource logoSource}">
             <Image.Resources>
-                <BitmapImage x:Key="logoSource" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="D:\Users\Luís Oliveira\Source\Repos\luisoliveirajr\CompiladorAlpha\CompiladorAlpha\CompiladorAlpha\logo2.png"/>
+                <BitmapImage x:Key="logoSource" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="D:\GitHub\CompiladorAlpha\CompiladorAlpha\CompiladorAlpha\logo2.png"/>
             </Image.Resources>
         </Image>
         <Label x:Name="label1" Content="Entrada:" HorizontalAlignment="Left" Margin="24,194,0,0" VerticalAlignment="Top" Width="53"/>

@@ -10,12 +10,15 @@ namespace CompiladorAlpha
     {
         private int i;
         private Stack<char> Pilha = new Stack<char>();
-
-
+        Simbolo ykg = new Simbolo();
+        
+       
+        
+       
         public int ValidaExpressaoPosfixa(String expressao)
         {
             Pilha.Clear();
-
+            
             for (i=0; i< expressao.Length; i++)
             {
                 //Se for operando empilha;
